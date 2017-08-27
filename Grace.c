@@ -1,8 +1,6 @@
 #include <stdio.h>
-#define DEF1
-#define DEF2
-/*
- *     com1
- *     */
-#define FUNCTION(x)int main(){FILE *stream = fopen("Grace_kid.c","w");char*a="#include <stdio.h>%c#define DEF1%c#define DEF2%c/*%c%ccom1%c*/%c#define FT(x)int main(){FILE *stream = fopen(%cGrace_kid.c%c,%cw%c);char*a=%c%s%c;fprintf(stream,a,10,10,10,10,9,10,10,34,34,34,34,34,a,34,10);}%cFT(1);";fprintf(stream,a,10,10,10,10,9,10,10,34,34,34,34,34,a,34,10);}
+#define CC
+#define LOL
+/*cc*/
+#define FUNCTION(x) int main(){FILE *new = fopen("Grace_kid.c","w");char*program="#include <stdio.h>%c#define CC%c#define LOL%c/*cc*/%c#define FUNCTION(x) int main(){FILE *new = fopen(%cGrace_kid.c%c,%cw%c);char*program=%c%s%c;fprintf(new,program,10,10,10,10,34,34,34,34,34,program,34,10, 10);}%cFUNCTION(42);%c";fprintf(new,program,10,10,10,10,34,34,34,34,34,program,34,10, 10);}
 FUNCTION(42);
