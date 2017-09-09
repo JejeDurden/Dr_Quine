@@ -6,51 +6,49 @@
 #    By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/11 10:38:56 by jdesmare          #+#    #+#              #
-#*   Updated: 2017/09/09 14:23:53 by jdesmare         ###   ########.fr       *#
+#*   Updated: 2017/09/09 14:37:30 by jdesmare         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Colleen
-NAME1 = Grace
-NAME2 = Sully
+NAME1 = Colleen
+NAME2 = Grace
+NAME3 = Sully
 
-SRC = Colleen.c
-SRC1 = Grace.c
-SRC2 = Sully.c
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
 
-REST =  Grace_kid.c		\
-		Sully_1.c		\
-		Sully_2.c		\
-		Sully_3.c		\
-		Sully_4.c		\
-		Sully_5.c		\
+SRC1=$(NAME1).c
+SRC2=$(NAME2).c
+SRC3=$(NAME3).c
+OBJ1 = $(SRC1:.c=.o)
+OBJ2 = $(SRC2:.c=.o)
+OBJ3 = $(SRC3:.c=.o)
 
-CC = gcc $(FLAGS)
+#.SILENT:
+all: $(NAME1)			 $(NAME2) $(NAME3)
 
-FILES = $(NAME) $(NAME1) $(NAME2)
+$(NAME1): $(OBJ1)
+		$(CC) $(CFLAGS) -o $(NAME1) $^
+		@echo "Compiling $(NAME1)... Done."
 
-FLAGS = -Wall -Werror -Wextra
+$(NAME2): $(OBJ2)
+		$(CC) $(CFLAGS) -o $(NAME2) $^
+		@echo "Compiling $(NAME2)... Done."
 
-all: $(NAME)
+$(NAME3): $(OBJ3)
+		$(CC) $(CFLAGS) -o $(NAME3) $^
+		@echo "Compiling $(NAME3)... Done."
 
-$(NAME):
-	@$(CC) -o $(NAME) $(SRC)
-	@echo "$(NAME) created successfully"
-	@$(CC) -o $(NAME1) $(SRC1)
-	@echo "$(NAME1) created successfully"
-	@$(CC) -o $(NAME2) $(SRC2)
-	@echo "$(NAME2) created successfully"
+%.o: %.c
+		$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	@echo "Erasing files..."
-	@rm -f $(FILES)
-	@rm -f $(REST)
-	@echo "Done."
+		@rm -rf $(OBJ1) $(OBJ2) $(OBJ3)
+		@echo "Erasing .o files... Done."
 
 fclean: clean
-	@echo "Erasing files..."
-	@rm -f $(FILES)
-	@echo "Done."
+		@rm -rf $(NAME1) $(NAME2) $(NAME3)
+		@echo "Erasing binaries... Done."
 
 re: fclean all clean
 
